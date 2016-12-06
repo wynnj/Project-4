@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="fonts/favicon.ico">
+
+    <title>Justin Wynn Project 4</title>
+
+    <link rel="stylesheet" type="text/css" href="slick/slick.css"/>
+    // Add the new slick-theme.css if you want the default styling
+    <link rel="stylesheet" type="text/css" href="slick/slick-theme.css"/>
+    <!-- Bootstrap core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet" />
+    <!-- Custom styles for this template -->
+    <link href="css/navbar-fixed-top.css" rel="stylesheet" />
+
+    <link href="css/styles.css" rel="stylesheet" />
+
+  </head>
+
+  <body>
+    <!-- Fixed navbar -->
+    <nav class="navbar navbar-default navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">Dakota Acess Pipeline</a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+            <li><a href="#back-to-top">About</a></li>
+            <li><a href="#map">Map</a></li>
+            <li><a href="#news">News</a></li>
+            <li><a href="#tweets">Twitter</a></li>
+          </ul>
+          <!--<ul class="nav navbar-nav navbar-right">
+            <li><a href="../navbar/">Default</a></li>
+            <li><a href="../navbar-static-top/">Static top</a></li>
+            <li class="active"><a href="./">Fixed top <span class="sr-only">(current)</span></a></li>
+          </ul> -->
+        </div><!--/.nav-collapse -->
+      </div>
+    </nav>
+
+      <!-- Main component for a primary marketing message or call to action -->
+    <div class="jumbotron">
+        <h1>About</h1>
+        <button class="accordion"><h3>What is The Dakota Access Pipeline Project?</h3></button>
+        <div class="panel">
+        <p>The Dakota Access Pipeline Project is a new 1,172-mile 30-inch diameter pipeline that will connect the expanding Bakken and Three Forks production areas in North Dakota to Patoka, Illinois. The pipeline will allow domestically produced oil from North Dakota to reach major markets in a direct, cost-effective, safer, and enviornmentally responsible manner. It will also reduce the use of rail and truck transportation of oil to major U.S. markets to support the domestic demand.</p>
+        <p>It will transport approximately 470,000 barrels per day with a capacity as high as 570,000 barrels per day or more – which could represent approximately half of Bakken current daily crude oil production. Shippers will be able to access multiple markets, including Midwest and East Coast markets as well as the Gulf Coast via the Nederland, Texas crude oil terminal facility of Sunoco Logistics Partners.</p>
+        <h6><a href="http://www.daplpipelinefacts.com/">source:http://www.daplpipelinefacts.com</a></h6>
+    </div>
+        </br>
+          <button class="accordion"><h3>The Controversy</h3></button>
+          <div class="panel">
+        <p>
+        Members of the Standing Rock Sioux Tribe do not want the pipeline built, because they see it as a major enviormental and cultural threat. THe route traverses ancestral lands - which are not part of their reservation - where their forebears hunted, fished, and were bruied. The historical and cultural reviews of the land when chosing to put the pipeline did not take their cultural significance into account. The Tribe also worries the possible catastrophic enviornmental damage to the land if the pipeline were to break near where it crosses under the Missouri River.
+        </p>
+        <p>
+        As of early November, due to the constant nation wide protest the federal government has stepped in and blocked the pipeline from crossing the river, saying the Army Corps of Engineers is reviewing approvals previously granted for the project.
+        </p>
+        <h6><a href="http://www.nytimes.com/2016/11/02/us/north-dakota-oil-pipeline-battle-whos-fighting-and-why.html">source:http://www.newyorktimes.com</a></h6>
+      </div>
+    </div> <!--end of jumbotron-->
+
+    <div class="col-md-12" id=#news>
+      <h1>The Latest News</h1>
+      <div class="headline"></div>
+      <script>
+      // Built by LucyBot. www.lucybot.com
+var url = "https://api.nytimes.com/svc/search/v2/articlesearch.json";
+url += '?' + $.param({
+  'api-key': "ad1a4fcf609b41e5bb6c5b7e1c5f0a23",
+  'q': "Dakota Access Pipeline"
+  'sort' : "latest"
+});
+$.ajax({
+  url: url,
+  method: 'GET',
+}).done(function(result) {
+  var articles = result.response.docs;
+  var html = "";
+  $.rach(articles, function(i, data){
+
+    html += '<h1 class="headline">' + '<a href="' +data.web_url + '">' +data.headline.man;
+  }
+
+
+
+}).fail(function(err) {
+  throw err;
+});
+      </script>
+    </div>
+
+    <div class="col-md-12" id=#map><!--Google Map-->
+      <h1>The Infamous Route</h1>
+
+    <style>
+      /* Always set the map height explicitly to define the size of the div
+       * element that contains the map. */
+      #map {
+        width: 100%;
+        height: 500px;
+      }
+    </style>
+
+
+  <body>
+
+  </div>
+
+
+    <script>
+    var acc = document.getElementsByClassName("accordion");
+var i;
+
+for (i = 0; i < acc.length; i++) {
+    acc[i].onclick = function(){
+        this.classList.toggle("active");
+        this.nextElementSibling.classList.toggle("show");
+    }
+}
+    </script>
+    <div id="map"></div>
+    <script>
+    function initMap() {
+          var stanley = {lat: 48.317241, lng: -102.390451};
+          var map = new google.maps.Map(document.getElementById('map'), {
+            zoom: 9,
+            center: stanley
+
+          });
+
+          var contentString1 = '<div id="content">'+
+                      '<div id="siteNotice">'+
+                      '</div>'+
+                      '<h1 id="firstHeading" class="firstHeading">Stanley North Dakota</h1>'+
+                      '<div id="bodyContent">'+
+                      '<p>The pipeline has to travel across hundreds of waterways. At least 22 of these crossings have to be drilled deep under large bodies of water. Indicated by blue markers</p>'+
+                      '<p><a href="http://www.nytimes.com/interactive/2016/11/23/us/dakota-access-pipeline-protest-map.html?_r=0">'+
+                      'source</a> '+
+                      '</p>'+
+                      '</div>'+
+                      '</div>';
+
+                      var infowindow1 = new google.maps.InfoWindow({
+                        content: contentString1
+                      });
+
+                      var marker1 = new google.maps.Marker({
+                        position: stanley,
+                        map: map,
+                        icon: 'images/homestar.png',
+                        title: 'Stanley Facility'
+                      });
+                      marker1.addListener('click', function() {
+                        infowindow1.open(map, marker1);
+                      });
+
+
+
+          var contentString2 = "Epping Facility";
+          var infowindow2 = new google.maps.InfoWindow({
+          content: contentString2
+          });
+
+          marker2 = new google.maps.Marker({
+          map: map,
+          icon: 'images/home.png',
+          draggable: true,
+          position: {lat: 48.279189, lng: -103.357133}
+          });
+           marker2.addListener('click', function() {
+             infowindow2.open(map, marker2);
+           });
+
+           var contentString3 = "Trenton Facility";
+           var infowindow3 = new google.maps.InfoWindow({
+             content: contentString3
+           });
+
+           marker3 = new google.maps.Marker({
+           map: map,
+           icon: 'images/home.png',
+           draggable: true,
+           position: {lat: 48.070578, lng: -103.836871}
+           });
+           marker3.addListener('click', function() {
+           infowindow3.open(map, marker3);
+           });
+
+           var contentString4 = "Watford City Facility";
+           var infowindow4 = new google.maps.InfoWindow({
+             content: contentString4
+           });
+
+           marker4 = new google.maps.Marker({
+           map: map,
+           icon: 'images/home.png',
+           draggable: true,
+           position: {lat: 47.802241, lng: -103.283247}
+           });
+           marker4.addListener('click', function() {
+           infowindow4.open(map, marker4);
+           });
+
+           var contentString5 = "Johnsons Corner Facility";
+           var infowindow5 = new google.maps.InfoWindow({
+             content: contentString5
+           });
+           marker5 = new google.maps.Marker({
+           map: map,
+           icon: 'images/home.png',
+           draggable: true,
+           position: {lat: 47.804186, lng: -102.941579}
+           });
+           marker5.addListener('click', function() {
+           infowindow5.open(map, marker5);
+           });
+
+           var contentString6 = "Little Missouri River";
+           var infowindow6 = new google.maps.InfoWindow({
+             content: contentString6
+           });
+           marker6 = new google.maps.Marker({
+           map: map,
+           icon: 'images/water.png',
+           draggable: true,
+           position: {lat: 47.527587, lng: -102.812805}
+           });
+           marker6.addListener('click', function() {
+           infowindow6.open(map, marker6);
+           });
+
+           var contentString7 = "Fort Berthold Reservation" +
+           '<div id="bodyContent">'+
+           '<p>Residences of Fort Berthold Reservation already live on the heart of the Bakken formation oil patch. They welcome the Dakota Pipeline and say it is worth the possible risk for the economic growth the oil can bring.</p>'+
+           '<p><a href="http://www.npr.org/2016/11/24/503212965/upstream-from-standing-rock-tribes-balance-benefits-risks-of-oil-industry">'+
+           'source</a> '+
+           '</div>';
+           var infowindow7 = new google.maps.InfoWindow({
+             content: contentString7
+           });
+           marker7 = new google.maps.Marker({
+           map: map,
+           icon: 'images/tentstar.png',
+           draggable: true,
+           position: {lat: 47.581033, lng: -101.893503}
+           });
+           marker7.addListener('click', function() {
+           infowindow7.open(map, marker7);
+           });
+
+           var contentString8 = "Knife River";
+           var infowindow8 = new google.maps.InfoWindow({
+             content: contentString8
+           });
+           marker8 = new google.maps.Marker({
+           map: map,
+           icon: 'images/water.png',
+           draggable: true,
+           position: {lat: 47.217329, lng: -102.454376}
+           });
+           marker8.addListener('click', function() {
+           infowindow8.open(map, marker8);
+           });
+
+           var contentString9 = "Heart River";
+           var infowindow9 = new google.maps.InfoWindow({
+             content: contentString9
+           });
+           marker9 = new google.maps.Marker({
+           map: map,
+           icon: 'images/water.png',
+           draggable: true,
+           position: {lat: 46.611337, lng: -101.072845}
+           });
+           marker9.addListener('click', function() {
+           infowindow9.open(map, marker9);
+           });
+
+           var contentString10 = "Standing Rock Reservation";
+           var infowindow10 = new google.maps.InfoWindow({
+             content: contentString10
+           });
+           marker10 = new google.maps.Marker({
+           map: map,
+           icon: 'images/tent.png',
+           draggable: true,
+           position: {lat: 45.750275, lng: -101.200415}
+           });
+           marker10.addListener('click', function() {
+           infowindow10.open(map, marker10);
+           });
+
+           var contentString11 = "Disputed Sioux Territory";
+           var infowindow11 = new google.maps.InfoWindow({
+             content: contentString11
+           });
+           marker11 = new google.maps.Marker({
+           map: map,
+           icon: 'images/tent.png',
+           draggable: true,
+           position: {lat: 45.997725, lng: -101.071111}
+           });
+           marker11.addListener('click', function() {
+           infowindow11.open(map, marker11);
+           });
+
+           var contentString12 = "Lake Oahe" + '<div id="bodyContent">'+
+           '<p>There have been large protests at the Lake Oahe crossing over potential water contamination and the damage of sacred tribal sites. The Missouri River is the Standing Rock Sioux Tribes largest source of drinking water.</p>'+
+           '</div>';
+           var infowindow12 = new google.maps.InfoWindow({
+             content: contentString12
+           });
+           marker12 = new google.maps.Marker({
+           map: map,
+           icon: 'images/waterstar.png',
+           draggable: true,
+           position: {lat: 46.389439, lng: -100.594011}
+           });
+           marker12.addListener('click', function() {
+           infowindow12.open(map, marker12);
+           });
+
+           var contentString13 = "Turtle Creek";
+           var infowindow13 = new google.maps.InfoWindow({
+             content: contentString13
+           });
+           marker13 = new google.maps.Marker({
+           map: map,
+           icon: 'images/water.png',
+           draggable: true,
+           position: {lat: 44.877477, lng: -98.534371}
+           });
+           marker13.addListener('click', function() {
+           infowindow13.open(map, marker13);
+           });
+
+           var contentString14 = "James River" + '<div id="bodyContent">'+
+           '<p>The crossing at the James River was rerouted to avoid three other bodies of water, which made the pipeline two miles longer.</p>'+
+           '</div>';
+           var infowindow14 = new google.maps.InfoWindow({
+             content: contentString14
+           });
+           marker14 = new google.maps.Marker({
+           map: map,
+           icon: 'images/waterstar.png',
+           draggable: true,
+           position: {lat: 44.377846, lng: -98.183570}
+           });
+           marker14.addListener('click', function() {
+           infowindow14.open(map, marker14);
+           });
+
+           var contentString15 = "Sioux Falls, S.D." + '<div id="bodyContent">'+
+           '<p>The route near Sioux Falls was initially rejected by the City Council because of its proximity to a landfill west of town.</p>'+
+           '</div>';
+           var infowindow15 = new google.maps.InfoWindow({
+             content: contentString15
+           });
+           marker15 = new google.maps.Marker({
+           map: map,
+           icon: 'images/homestar.png',
+           draggable: true,
+           position: {lat: 43.544596, lng: -96.731103}
+           });
+           marker15.addListener('click', function() {
+           infowindow15.open(map, marker15);
+           });
+
+           var contentString16 = "Big Sioux River";
+           var infowindow16 = new google.maps.InfoWindow({
+             content: contentString16
+           });
+           marker16 = new google.maps.Marker({
+           map: map,
+           icon: 'images/water.png',
+           draggable: true,
+           position: {lat: 43.378003, lng: -96.640099}
+           });
+           marker16.addListener('click', function() {
+           infowindow16.open(map, marker16);
+           });
+
+           var contentString17 = "Patoka Ill." + '<div id="bodyContent">'+
+           '<p>The pipeline ends near here, where the crude oil will be transported to refineries via railroad tank cars and an existing pipeline.</p>'+
+           '</div>';
+           var infowindow17 = new google.maps.InfoWindow({
+             content: contentString17
+           });
+           marker17 = new google.maps.Marker({
+           map: map,
+           icon: 'images/waterstar.png',
+           draggable: true,
+           position: {lat: 38.755326, lng: -89.095342}
+           });
+           marker17.addListener('click', function() {
+           infowindow17.open(map, marker17);
+           });
+
+
+
+
+
+           var flightPlanCoordinates = [
+                    {lat: 48.317241, lng: -102.390451},
+                    {lat: 48.279189, lng: -103.357133},
+                    {lat: 48.070578, lng: -103.836871},
+                    {lat: 47.802241, lng: -103.283247},
+                    {lat: 47.804186, lng: -102.941579},
+                    {lat: 47.527587, lng: -102.812805},
+                    {lat: 47.217329, lng: -102.454376},
+                    {lat: 46.611337, lng: -101.072845},
+                    {lat: 46.389439, lng: -100.594011},
+                    {lat: 44.877477, lng: -98.534371},
+                    {lat: 44.377846, lng: -98.183570},
+                    {lat: 43.378003, lng: -96.640099},
+                    {lat: 38.755326, lng: -89.095342},
+
+                  ];
+                  var flightPath = new google.maps.Polyline({
+                    path: flightPlanCoordinates,
+                    geodesic: true,
+                    strokeColor: '#FF0000',
+                    strokeOpacity: 1.0,
+                    strokeWeight: 2
+                  });
+                  flightPath.setMap(map);
+         }
+         //Google Maps Style From Snazzy Maps https://snazzymaps.com/style/93/lost-in-the-desert
+
+
+
+    </script>
+
+
+
+    </div> <!-- /container -->
+    <!--Google Map-->
+    <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyChOXqB9ytxnlBtsaCMryT7C2Iljvm5s48&callback=initMap">
+    </script>
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js" type="text/javascript"></script>
+    <script src="javascripts/modernizr.js" type="text/javascript"></script>
+    <script>window.jQuery || document.write('<script src="js/vendor/jquery.min.js"><\/script>')</script>
+    <script src="js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+    <script type="text/javascript" src="slick/slick.min.js"></script>
+  </body>
+</html>
